@@ -20,7 +20,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -qq update && \
     DEBIAN_FRONTEND=noninteractive apt-get -qq install -y expect git wget libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 lib32z1 python curl gradle
 
 RUN cd /opt
-RUN wget -q -O androidsdk.tgz ${ANDROID_SDK_URL}
+RUN wget -q -O androidsdk.tgz $ANDROID_SDK_URL
 RUN tar -x -z androidsdk.tgz 
 RUN echo y | android update sdk -a -u -t platform-tools,${ANDROID_APIS},build-tools-${ANDROID_BUILD_TOOLS_VERSION},${ABIS}
 RUN chmod a+x -R $ANDROID_HOME
