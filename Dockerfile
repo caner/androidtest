@@ -21,7 +21,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -qq update && \
 
 RUN cd /opt
 RUN wget -q -O androidsdk.tgz $ANDROID_SDK_URL
-RUN tar -x -z androidsdk.tgz 
+RUN tar --no-same-owner -xz androidsdk.tgz 
 RUN echo y | android update sdk -a -u -t platform-tools,${ANDROID_APIS},build-tools-${ANDROID_BUILD_TOOLS_VERSION},${ABIS}
 RUN chmod a+x -R $ANDROID_HOME
 RUN chown -R root:root $ANDROID_HOME
